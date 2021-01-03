@@ -15,4 +15,4 @@ jobs:
       - ruby/bundle-install
       - run:
           name: Rails Test
-          command: rails t
+          command: bin/rails t
