@@ -6,6 +6,12 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.0
+        environment: 
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: ''
+      - image: circleci/mysql:8.0.22
     executor: ruby/default
     steps:
       - checkout
