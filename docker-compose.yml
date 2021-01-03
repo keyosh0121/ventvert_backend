@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.22
+    environment:
+      MYSQL_DATABASE: ventvert
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/ventvert_backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/workdir
