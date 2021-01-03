@@ -9,8 +9,8 @@ jobs:
         environment: 
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
-          DB_USERNAME: 'root'
-          DB_PASSWORD: ''
+          DB_USERNAME: root
+          DB_PASSWORD:
       - image: circleci/mysql:8.0.22
     executor: ruby/default
     steps:
@@ -19,6 +19,9 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      - run:
+          name: Wait for DB connection
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 180s
       - run:
           name: Rails Test Preparation (Create DB)
           command: bin/rails db:create
