@@ -14,5 +14,11 @@ jobs:
           command: bundle -v
       - ruby/bundle-install
       - run:
+          name: Rails Test Preparation (Create DB)
+          command: bin/rails db:create
+      - run:
+          name: Rails Test Preparation (Migrate DB)
+          command: bin/rails db:migrate
+      - run:
           name: Rails Test
           command: bin/rails t
