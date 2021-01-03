@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :update, :destroy]
+  before_action :set_report, only: %i[show update destroy]
 
   # GET /reports
   def index
@@ -39,13 +41,14 @@ class ReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def report_params
-      params.require(:report).permit(:title, :category, :content, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report
+    @report = Report.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def report_params
+    params.require(:report).permit(:title, :category, :content, :user_id)
+  end
 end

@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :update, :destroy]
+  before_action :set_schedule, only: %i[show update destroy]
 
   # GET /schedules
   def index
     @schedules = Schedule.all.order(date: :asc)
-    if params[:limit]
-      @schedules = @schedules.limit(params[:limit].to_i)
-    end
+    @schedules = @schedules.limit(params[:limit].to_i) if params[:limit]
     render json: @schedules
   end
 
@@ -41,13 +41,14 @@ class SchedulesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_schedule
-      @schedule = Schedule.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def schedule_params
-      params.require(:schedule).permit(:content, :date, :time, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def schedule_params
+    params.require(:schedule).permit(:content, :date, :time, :user_id)
+  end
 end

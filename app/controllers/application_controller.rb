@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::API
+# frozen_string_literal: true
 
+class ApplicationController < ActionController::API
   include AbstractController::Translation
 
   before_action :authenticate_user_from_token!
@@ -21,7 +22,7 @@ class ApplicationController < ActionController::API
 
   private
 
-  def authenticate_with_auth_token auth_token
+  def authenticate_with_auth_token(auth_token)
     unless auth_token.include?(':')
       authenticate_error
       return

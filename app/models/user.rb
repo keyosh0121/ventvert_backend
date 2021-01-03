@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -7,8 +9,7 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def update_access_token!
-    self.access_token = "#{self.id}:#{Devise.friendly_token}"
+    self.access_token = "#{id}:#{Devise.friendly_token}"
     save
   end
-  
 end

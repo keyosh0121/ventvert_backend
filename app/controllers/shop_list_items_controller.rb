@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class ShopListItemsController < ApplicationController
-  before_action :set_shop_list_item, only: [:show, :update, :destroy]
+  before_action :set_shop_list_item, only: %i[show update destroy]
 
   # GET /shop_list_items
   def index
     @shop_list_items = ShopListItem.all
-    if params[:limit]
-      @shop_list_items = @shop_list_items.limit(3)
-    end
+    @shop_list_items = @shop_list_items.limit(3) if params[:limit]
     render json: @shop_list_items
   end
 
@@ -41,13 +41,14 @@ class ShopListItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shop_list_item
-      @shop_list_item = ShopListItem.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def shop_list_item_params
-      params.require(:shop_list_item).permit(:content, :user_id, :color, :icon)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shop_list_item
+    @shop_list_item = ShopListItem.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def shop_list_item_params
+    params.require(:shop_list_item).permit(:content, :user_id, :color, :icon)
+  end
 end

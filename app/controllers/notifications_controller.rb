@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:show, :update, :destroy]
+  before_action :set_notification, only: %i[show update destroy]
 
   # GET /notifications
   def index
     @notifications = Notification.all.order(created_at: :desc)
-    if params[:alert]
-      @notifications = @notifications.where(alert: true).where(unopened: true)
-    end
+    @notifications = @notifications.where(alert: true).where(unopened: true) if params[:alert]
     render json: @notifications
   end
 
@@ -41,13 +41,14 @@ class NotificationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_notification
-      @notification = Notification.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def notification_params
-      params.require(:notification).permit(:title, :content, :user_id, :alert, :unopened)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_notification
+    @notification = Notification.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def notification_params
+    params.require(:notification).permit(:title, :content, :user_id, :alert, :unopened)
+  end
 end
