@@ -1,24 +1,24 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+# VentVert Backend API 
+This API manages daily information sharing between family, roommates etc.
+This application is designed to be used by two people.
+This backend application provides following API CRUD functions.
+ - Manage the lending and borrowing of daily monetary payments
+ - Manage your shopping list
+ - Management of important notifications for family members and co-residents
+ - Keep track of important schedules and dates
+ - Bug Reports
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
+  2.6.0
+  
 * Database initialization
+  MySQL
 
 * How to run the test suite
+  $ rails t
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Experience and learning covered through this project
+  Simple API application development with Ruby on Rails
+  Automated Integration test within API functions 
+  CI/CD using CircleCI (Automated test, static code check and deployment/ build to prod env) 
+  Automated System Operation using AWS managed services 
