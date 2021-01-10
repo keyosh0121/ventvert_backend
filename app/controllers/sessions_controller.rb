@@ -15,6 +15,12 @@ class SessionsController < ApplicationController
       invalid_password
     end
   end
+  ##
+  # Health check endpoint
+  # Check connection to DB and returns 200
+  def health
+    render json: { health: "ok"}, status: 200 if ActiveRecord::Base.connected? 
+  end
 
   private
 
