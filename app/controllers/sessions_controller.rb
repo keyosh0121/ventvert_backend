@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   # Health check endpoint
   # Check connection to DB and returns 200
   def health
-    render json: { health: "ok"}, status: 200 if ActiveRecord::Base.connected? 
+    render json: { health: "OK"}, status: 200 if ActiveRecord::Base.connected? 
   end
 
   private
