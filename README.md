@@ -23,3 +23,4 @@ This backend application provides following API CRUD functions.
  - CI/CD using CircleCI (Automated test, static code check and
    deployment/ build to prod env)
  - Automated System Operation using AWS managed services 
+ - Regular Health check and monitoring 
