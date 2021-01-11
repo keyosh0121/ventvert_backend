@@ -9,7 +9,7 @@ This backend application provides following API CRUD functions.
  - [ ] Manage your shopping list  
  - [ ] Management of important notifications for family members and co-residents  
  - [ ] Keep track of important schedules and dates  
- - [ ] Bug Reports
+ - [ ] Bug Reports (NEW!: Automatically add Issue to Github Repository)
 
 **Ruby version**:  2.6.0
   

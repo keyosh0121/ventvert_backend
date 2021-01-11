@@ -20,6 +20,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
+      @report.create_github_issue if Rails.env != 'test' 
       render json: @report, status: :created, location: @report
     else
       render json: @report.errors, status: :unprocessable_entity
