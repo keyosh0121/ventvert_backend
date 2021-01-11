@@ -20,7 +20,7 @@ class Report < ApplicationRecord
     
     data = {title: title, body: content}
     
-    # begin
+    begin
       
       https = Net::HTTP.new(uri.host,uri.port)
       https.use_ssl = true
@@ -40,15 +40,15 @@ class Report < ApplicationRecord
         logger.error("HTTP ERROR: code: #{res.code} message: #{res.message}")
       end
         
-    # rescue IOError => e
-    #   logger.error(e.message)
-    # rescue Timeout::Error => e
-    #   logger.error(e.message)
-    # rescue JSON::ParserError => e
-    #   logger.error(e.message)
-    # rescue => e
-    #   logger.error(e.message)
-    # end
+    rescue IOError => e
+      logger.error(e.message)
+    rescue Timeout::Error => e
+      logger.error(e.message)
+    rescue JSON::ParserError => e
+      logger.error(e.message)
+    rescue => e
+      logger.error(e.message)
+    end
 
   end
 end
