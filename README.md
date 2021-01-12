@@ -2,6 +2,7 @@
 # VentVert Backend API 
 This API manages daily information sharing between family, roommates etc.
 This application is designed to be used by two people.
+It is designed to provide REST API functionality for requests from [ventvert_frontend](https://github.com/keyosh0121/ventvert_frontend) 
 
 This backend application provides following API CRUD functions.
 
